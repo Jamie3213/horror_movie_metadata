@@ -1,10 +1,16 @@
-Tidy Tuesday - Horror Movie Metadata
-================
-Jamie Hargreaves
+---
+title: "Tidy Tuesday - Horror Movie Metadata"
+author: "Jamie Hargreaves"
+output: rmarkdown::github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
 ## Load the data
 
-``` r
+```{r message = FALSE, warning = FALSE}
 library(tidyverse)
 library(magrittr)
 
@@ -14,7 +20,7 @@ horror_movies <- readr::read_csv("https://raw.githubusercontent.com/rfordatascie
 
 ## Manipulation
 
-``` r
+```{r}
 # get the release year
 horror_movies %<>%
   mutate(release_year = str_sub(release_date, start = -2))
@@ -86,7 +92,7 @@ horror_movies %<>%
 
 ## Create a new data set
 
-``` r
+```{r}
 # make a new tibble with just the features we want
 horror_movies_final <- horror_movies %>%
   select(
@@ -101,7 +107,7 @@ horror_movies_final %<>%
 
 ## Train a multiple linear regression model and plot the most important predictors
 
-``` r
+```{r warning = FALSE, message = FALSE, fig.retina = 2, fig.align = 'center'}
 # train a multiple linear regression
 mlr <- lm(rating ~., data = horror_movies_final)
 
@@ -127,5 +133,3 @@ tibble(
   ) + 
   theme_ipsum()
 ```
-
-<img src="README_files/figure-gfm/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" />
