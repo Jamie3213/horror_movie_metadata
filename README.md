@@ -124,7 +124,7 @@ tibble(
     y = "Variable Importance Score",
     title = "What Factors Influence a Movie's Rating?",
     subtitle = "Top 10 Most Influential Predictors Using Multiple Linear Regression",
-    caption = "Predictors considered: release year, month, day of week, country,
+    caption = "Predictors considered: release year, month, day, country,
     movie run time, number of languages and number of genres spanned."
   ) + 
   theme_ipsum()
