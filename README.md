@@ -2,19 +2,13 @@ Tidy Tuesday - Horror Movie Metadata
 ================
 Jamie Hargreaves
 
-## Load the data
-
 ``` r
 library(tidyverse)
 library(magrittr)
 
 # get data
 horror_movies <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-10-22/horror_movies.csv")
-```
 
-## Manipulation
-
-``` r
 # get the release year
 horror_movies %<>%
   mutate(release_year = str_sub(release_date, start = -2))
@@ -82,11 +76,7 @@ horror_movies %<>%
 # create a variable that captures how many languages the movie spans
 horror_movies %<>%
   mutate(languages_spanned = str_count(language, "\\|") + 1)
-```
 
-## Create a new data set
-
-``` r
 # make a new tibble with just the features we want
 horror_movies_final <- horror_movies %>%
   select(
@@ -97,11 +87,7 @@ horror_movies_final <- horror_movies %>%
 # filter NAs
 horror_movies_final %<>%
   drop_na()
-```
 
-## Train a multiple linear regression model and plot the most important predictors
-
-``` r
 # train a multiple linear regression
 mlr <- lm(rating ~., data = horror_movies_final)
 
@@ -130,4 +116,4 @@ tibble(
   theme_ipsum()
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" />
+<img src="README_files/figure-gfm/unnamed-chunk-1-1.png" width="672" style="display: block; margin: auto;" />
