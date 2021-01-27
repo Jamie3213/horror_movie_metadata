@@ -1,4 +1,4 @@
-Tidy Tuesday - Horror Movie Metadata
+Horror Movie Metadata
 ================
 Jamie Hargreaves
 
